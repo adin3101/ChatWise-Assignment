@@ -20,4 +20,7 @@ mongoose
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
 app.use("/friendRequests", friendRequestRoutes);
+app.get("/", (req, res) => {
+  res.status(200).send("Welcome to the Backend Assessment");
+});
 
