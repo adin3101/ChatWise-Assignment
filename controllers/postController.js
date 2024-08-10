@@ -7,8 +7,10 @@ export const getfriendPosts = async (req, res) => {
     const user = await User.findById(userId).populate("friends");
     const friendIds = user.friends.map((friend) => friend._id);
     const posts = await Posts.find({ user_Id: { $in: friendIds } })
-      .populate("user_Id")
-      .populate("comments.user_Id");
+      .populate("user_Id", "username")
+      .populate({path:"comments.user_Id",
+                select:"username"
+      });
 
     res.status(200).json(posts);
   } catch (err) {
@@ -31,8 +33,10 @@ export const getPostWFriendsComments = async (req, res) => {
         },
       ],
     })
-      .populate("user_Id")
-      .populate("comments.user_Id");
+     .populate("user_Id", "username")
+      .populate({path:"comments.user_Id",
+                select:"username"
+      });
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: err.message });
