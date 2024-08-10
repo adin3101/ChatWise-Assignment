@@ -1,5 +1,5 @@
-import Posts from "../models/Posts";
-import User from "../models/User";
+import Posts from "../models/Posts.js";
+import User from "../models/User.js";
 
 export const getfriendPosts = async (req, res) => {
   try {
