@@ -1,5 +1,5 @@
-import friendRequests from "../models/friendRequests";
-import User from "../models/User";
+import friendRequests from "../models/friendRequests.js";
+import User from "../models/User.js";
 
 export const sendFriendRequest = async(req,res)=>{
     try {
